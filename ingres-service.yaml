@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-service
+spec:
+  # ingressClassName: nginx # use only with k8s version >= 1.18.0
+  tls:
+  rules:
+  - host: nginx.exampletest.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: nginx-cluster-ip-service
+          servicePort: 80
